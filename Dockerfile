@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 ENV DEBIAN_FRONTENV noninteractive
 
@@ -8,7 +8,7 @@ RUN apt-get update && apt-get -y upgrade
 # http://www.yoctoproject.org/docs/latest/mega-manual/mega-manual.html#required-packages-for-the-host-development-system
 RUN apt-get install -y gawk wget git-core diffstat unzip texinfo gcc-multilib g++-multilib \
      build-essential chrpath socat cpio python python3 python3-pip python3-pexpect \
-     apt-utils tmux xz-utils debianutils iputils-ping libncurses5-dev
+     apt-utils tmux xz-utils debianutils iputils-ping libncurses5-dev repo
 
 # Additional host packages required by poky/scripts/wic
 RUN apt-get install -y curl dosfstools mtools parted syslinux tree zip
@@ -37,6 +37,7 @@ ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
 
+RUN apt-get install 
 USER build
 WORKDIR /home/build
 CMD "/bin/bash"
